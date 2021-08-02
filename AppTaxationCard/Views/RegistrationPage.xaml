@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="AppTaxationCard.Views.RegistrationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <Style x:Key="MaskedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <DataTemplate x:Key="HeaderTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding}" TextWrapping="WrapWholeWords" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+
+        <StackPanel Width="500" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox MaxLength="25" PlaceholderText="Username" x:Name="usernameBox" Header="*Имя пользователя"></TextBox>
+            <TextBox MaxLength="25" PlaceholderText="Введите свое имя" x:Name="nameBox" Header="Имя"></TextBox>
+            <TextBox MaxLength="25" PlaceholderText="Введите свою фамилию" x:Name="surnameBox" Header="Фамилия"></TextBox>
+            <TextBox MaxLength="25" PlaceholderText="taxation@info.com" Name="emailBox" Header="Email" extensions:TextBoxRegex.ValidationType="Email"/>
+            <TextBox Style="{StaticResource MaskedTextBoxStyle}"  extensions:TextBoxMask.Mask="+375999999999" extensions:TextBoxMask.PlaceHolder=" " x:Name="phoneBox" Header="Мобильный телефон"></TextBox>
+            <PasswordBox MaxLength="12" PlaceholderText="************"  x:Name="passwordBox" Header="*Пароль"></PasswordBox>
+            <!--<TextBlock HorizontalAlignment="Left"  Foreground="Red" Text="Пароль не может содержать менее 6 символов"></TextBlock>-->
+            <PasswordBox MaxLength="12"  PlaceholderText="************" x:Name="isPasswordBox" Header="*Повторите пороль"></PasswordBox>
+            <!--<TextBlock HorizontalAlignment="Left" x:Name="isPassText" Foreground="Red" Text="Нет совпадений"></TextBlock>-->
+         
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0,10,0,10" Orientation="Vertical" HorizontalAlignment="Left">
+
+                    <CheckBox x:Name="Chek" Content="Соглашаюсь с условиями использвания"  VerticalAlignment="Center" Margin="5" ></CheckBox>
+                    <Button Margin="5" IsEnabled="{Binding ElementName=Chek,Path=IsChecked}" Name="SignUp" Click="SignIn_Click"  >ЗАРЕГИСТРИРОВАТЬСЯ</Button>
+
+                </StackPanel>
+                <Button VerticalAlignment="Top"  Margin="15" x:Name="Exit"  Click="Exit_Click">Выйти</Button>
+              
+         
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Page>

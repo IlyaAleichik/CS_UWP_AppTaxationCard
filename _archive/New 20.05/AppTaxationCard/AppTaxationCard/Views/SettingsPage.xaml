@@ -1,0 +1,152 @@
+﻿<Page
+    x:Class="AppTaxationCard.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:AppTaxationCard.Views"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="contentSV.Padding" Value="14,0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Pivot Title="Настройки" FontFamily="Segoe UI" >
+
+            <PivotItem Margin="0,20,0,0" Header="Основные">
+
+                <ScrollViewer x:Name="contentSV" Grid.Row="1" Padding="20,0,0,0" IsTabStop="False" UseSystemFocusVisuals="False" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
+                    <StackPanel HorizontalAlignment="Left">
+                        <!--<TextBlock Style="{StaticResource TitleTextBlockStyle}"  Margin="0,4,0,0" FontWeight="Normal" Text="Выбрать режим " FontFamily="Segoe UI" />
+
+                        <StackPanel x:Name="ThemePanel" Margin="0,10,0,0">
+                            <RadioButton GroupName="themes" Tag="Light" Content="Светлая" Checked="RadioButton_Checked" />
+                            <RadioButton  GroupName="themes" Tag="Dark"  Content="Темная" Checked="RadioButton_Checked"/>
+                            <RadioButton   GroupName="themes" Tag="Default" Content="Стандартная Windows" Checked="RadioButton_Checked" />
+                        </StackPanel>-->
+
+                        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0,0,0,0" FontWeight="Normal" Text="Звуки" />
+
+                        <StackPanel Margin="0,10,0,0">
+                            <ToggleSwitch x:Name="soundToggle" Header="Вкл/Выкл звуковые эффекты" Toggled="soundToggle_Toggled" OffContent="Off" OnContent="On" Margin="0,0,0,4"/>
+                            <CheckBox x:Name="spatialSoundBox" Unchecked="spatialSoundBox_Unchecked" Checked="spatialSoundBox_Checked" IsEnabled="False" Content="Пространственный звук"/>
+                        </StackPanel>
+
+                        <TextBlock Style="{StaticResource TitleTextBlockStyle}"  Margin="0,40,0,0"  FontWeight="Normal" Text="О программе" />
+
+                        <RichTextBlock MaxWidth="840" Margin="0,10,0,0" IsTextSelectionEnabled="True" FontFamily="Segoe UI">
+                            <Paragraph>
+                                Связаться с автором:
+                                <Hyperlink NavigateUri="mailto:Ilya.alejchik@outlook.com">Ilya.alejchik@outlook.com</Hyperlink> .
+                            </Paragraph>
+                        </RichTextBlock>
+
+                        <TextBlock Margin="0,10,0,0" FontFamily="Segoe UI">Version: <Run Text="{x:Bind Version}"/></TextBlock>
+
+                        <!--<Button  Content="Обратная связь" Margin="0,8,0,0" Visibility="Visible" />-->
+                
+                        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0,40,0,0" FontWeight="Normal" Text="Описание" />
+
+                        <RichTextBlock MaxWidth="840" Margin="0,10,0,50" IsTextSelectionEnabled="True" FontFamily="Segoe UI">
+                            <Paragraph FontFamily="Segoe UI">
+                                <LineBreak /> Copyright (c) Arbitrix Studio 2019.
+                            </Paragraph>
+                            <Paragraph Margin="0,10,0,10" FontFamily="Segoe UI">
+                                Приложение создано учащимся "ЧУО Колледжа бизнеса и права" в рамках дипломного проектирования.                            
+                            </Paragraph>
+                            <Paragraph Margin="0,10,0,10" FontFamily="Segoe UI">
+                                Более подробную информацию о приложении можно узнать
+                                <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?LinkId=822631">здесь.</Hyperlink>
+                            </Paragraph>
+                            
+                        </RichTextBlock>
+
+                    </StackPanel>
+                </ScrollViewer>
+
+            </PivotItem>
+
+            <PivotItem  Margin="0,20,0,0" Header="Поставщики данных">
+
+                <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalScrollBarVisibility="Auto">
+                    <ContentControl>
+                        <StackPanel Margin="24,12" MaxWidth="800">
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="7" Width="100"  HorizontalAlignment="Left" Source="ms-appx:///Assets/Asset.png" Stretch="UniformToFill" />
+                                <TextBlock FontSize="60" Foreground="ForestGreen" VerticalAlignment="Bottom" Text="TaxationCard App"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,12">
+                                <TextBlock Text="{x:Bind Version}" />
+                                <TextBlock><Hyperlink NavigateUri="https://github.com/IlyaAlejchik">https://github.com/IlyaAlejchik</Hyperlink></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,12,0,0">
+                                <TextBlock Margin="0,12" Text="Поставщик данных" Style="{StaticResource TitleTextBlockStyle}"  />
+                                <TextBlock Text="Выбор и настройка поставщика" />
+                                <RadioButton Margin="0,12" GroupName="providers">
+                                    <ContentControl >
+                                        <StackPanel>
+                                            <TextBlock Text="Поставщик данных SQLite LocalDB" LineHeight="26" />
+                                            <TextBlock Text="Образец поставщика данных на основе локальной базы данных SQLite." TextWrapping="Wrap" Foreground="Gray" />
+                                            <Border Margin="8" />
+                                            <Button Content="Reset data" />
+                                        </StackPanel>
+                                    </ContentControl>
+                                </RadioButton>
+                                <!--<TextBlock Foreground="#FFB23838" Margin="10" Text="Поставщик данных Microsoft SQL Server, не доступен в данной версии приложения!"></TextBlock>
+                                <RadioButton IsEnabled="False" Margin="0,0,0,20" GroupName="providers">
+                                    <ContentControl >
+                                        <StackPanel>
+                                            <TextBlock Text="Поставщик данных SQL" LineHeight="26" />
+                                            <TextBlock Text="Пример поставщика данных, обращающегося к базе данных Microsoft SQL Server." TextWrapping="Wrap" Foreground="Gray" />
+                                            <Border Margin="4" />
+                                            <TextBlock Text="Connection string" LineHeight="26" />
+                                            <TextBox Text="" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False" />
+                                            <Border Margin="8" />
+                                            <StackPanel Orientation="Horizontal" Spacing="24">
+                                                <Button Content="Проверка соединения"  />
+                                                <Button Content=" Созданная база даннх"  />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ContentControl>
+                                </RadioButton>-->
+                            </StackPanel>
+                            <!--<Button IsEnabled="False" Content="Save Changes" HorizontalAlignment="Right"  />-->
+                        </StackPanel>
+
+                    </ContentControl>
+                </ScrollViewer>
+
+            </PivotItem>
+
+            <PivotItem  Margin="0,20,0,0" Header="Справка">
+                <WebView x:Name="HelpWebView"  Source="ms-appx-web:///Helps/index.html"></WebView>
+            </PivotItem>
+
+        </Pivot>
+    </Grid>
+</Page>

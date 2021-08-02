@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Добро пожаловать</h1>
+        <p>Cправочная система AppTaxationCard .</p>
+    </div>
+
+    <div class="topnav">
+        <a href="index.html">Инструкция по применению</a>
+        <a href="index_license.html" class="active">Условия использования</a>
+        <a href="index_requarment.html">Технические требования</a>
+        <a href="index_about.html">О программе</a>
+    </div>
+
+
+    <div class="row">
+        <div class="leftcolumn">
+            <div class="card">
+                <h2>Инструкция по применению</h2>
+                <br>
+                <p></p>
+                <button type="button" class="button" onclick="Home()">Читать </button>
+            </div>
+            <div class="card">
+                <h2>О программе</h2>
+                <p>Во время походов по лесу, находясь временами в суровых условиях, использование бумаги для записи собранных данных довольно неудобно, ненадежно и занимает много времени. В связи с этим...</p>
+                <br>
+                <button type="button" class="button" onclick="About()">Читать </button>
+            </div>
+            <div class="card">
+                <h2>Технические требования</h2>
+                <p>Сдесь описаны необходиме технические средства для полноценной работы программного средства.</p>
+                <br>
+                <button type="button" class="button" onclick="Requarements()">Читать </button>
+            </div>
+        </div>
+
+
+
+
+        <div class="rightcolumn">
+            <div class="card">
+                <h2>Условия использования</h2>
+                <br>
+                <p>Программа «AppTaxationCard.appx» предназначена для сотрудников организаций, которые занимаются учетом лесных ресурсов. </p>
+                <p>Для использования программного средства в иных целях, необходимо переговорить с разработчиком. <br> Контактные данные разработчика представлены
+                    <a href="#contact"></a>ниже</a>
+                </p>
+                <br>
+
+            </div>
+        </div>
+    </div>
+
+    <div name="contact" class="footer">
+        <div class="footer-row">
+            <div class="footer-column">
+                <h4 id="contact">Контактная информация</h4>
+                <p>Email: Ilya.alejchik@outlook.com</p>
+                <p>Телефон: +375(33)334-31-56</p>
+                <p>Artstation: <a href="https://www.artstation.com/ilyaalejchik">https://www.artstation.com/ilyaalejchik</a></p>
+                <p>VK:
+                    <a href="https://vk.com/microsoftone">https://vk.com/microsoftone</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="copy">Copyright IlyaAlejchik | Arbitrix Studio, 2019.</div>
+    <script type="text/javascript">
+        function Home() {
+            location.href = 'index.html';
+        }
+
+        function About() {
+            location.href = 'index_about.html';
+        }
+
+        function License() {
+            location.href = 'index_license.html';
+        }
+
+        function Requarements() {
+            location.href = 'index_requarment.html';
+        }
+    </script>
+</body>
+
+</html>

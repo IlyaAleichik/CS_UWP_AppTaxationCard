@@ -1,0 +1,251 @@
+﻿<Page
+    x:Class="AppTaxationCard.Views.DashboardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:vm="using:AppTaxationCard.ViewModels"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:local="using:AppTaxationCard.Views"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:DashboardPageViewModel />
+    </Page.DataContext>
+    
+    <Page.Resources>
+        <local:DateTimeOffsetToStringConverter x:Key="myDateConverter" />
+    </Page.Resources>
+ 
+
+    <!--<DataTemplate xmlns:data="using:News.Data" x:DataType="data:NewsItem">
+                    <Grid Height="120" Background="#33000000" SizeChanged="Template_SizeChanged" Loaded="Template_Loaded">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <composition:CompositionShadow Color="Black" ShadowOpacity="1" BlurRadius="30" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                            <Border Height="3" Background="Transparent"></Border>
+                        </composition:CompositionShadow>
+
+                        <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="25,0,0,0">11:00AM</TextBlock>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Loaded="Grid_Loaded" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="68" Width="68" Margin="20,0">
+                                <Ellipse StrokeThickness="1" Stroke="#97FFFFFF" Height="68" Width="68"/>
+                                <composition:CompositionShadow Color="Black" OffsetX="0" OffsetY="0" ShadowOpacity="0.5" BlurRadius="30">
+                                    <composition:CompositionImage Source="{x:Bind HeroImage}" Height="55" Width="55" Stretch="UniformToFill"></composition:CompositionImage>
+                                </composition:CompositionShadow>
+                            </Grid>
+
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Name="TitleLine" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis"></TextBlock>
+                                <TextBlock Name="SummaryLine" Text="{x:Bind Summary}" TextTrimming="WordEllipsis" TextWrapping="WrapWholeWords" MaxLines="2" FontSize="11"></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Name="CommentStack" Grid.Column="2" Orientation="Horizontal" Margin="60,40,60,0">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Margin="0,4,25,0"></TextBlock>
+                                <TextBlock Text="{x:Bind Summary}" MaxWidth="180" TextWrapping="WrapWholeWords" TextTrimming="WordEllipsis" FontSize="11" MaxLines="2"></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Name="LikeStack" Grid.Column="3" Orientation="Horizontal" Margin="0,40,60,0">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" Margin="0,4,25,0"></TextBlock>
+                                <TextBlock Text="{x:Bind Summary}" MaxWidth="180" TextWrapping="WrapWholeWords" TextTrimming="WordEllipsis" FontSize="11" MaxLines="2"></TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Name="LikesStack" Grid.Column="4" Orientation="Horizontal" Margin="25,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center" ></TextBlock>
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="15" VerticalAlignment="Center" Margin="10,0,4,0"></TextBlock>
+                                <TextBlock FontSize="12" VerticalAlignment="Center" Margin="0,7,0,0" Text="{x:Bind Likes}"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>-->
+    
+
+    <Grid>
+
+
+        <ScrollViewer>
+
+            <Grid>
+                <maps:MapControl  x:Name="Map" Visibility="Collapsed"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ZoomInteractionMode="GestureAndControl" TiltInteractionMode="GestureAndControl" AllowFocusOnInteraction="True" IsFocusEngagementEnabled="False"
+               ColorScheme="Dark" Loaded="MapControl_Loaded" IsTabStop="False" ActualCameraChanged="Map_ActualCameraChanged"  MapServiceToken="Z8bOzSqME7FLLknogBiN~Og1zrYWWy10y4aMNzxcYwQ~AsgYVHA_FhKjCNjj0ZDsxEvfs5fTtl0mnaFLEvZDLItAMa_dSJee5guYjq9EfnzT"/>
+                <!--MapElementClick="OnMapElementClick"-->
+                <Slider Visibility="Collapsed" x:Name="RotationSlider" VerticalAlignment="Top" Minimum ="-180" Maximum="180" 
+                Value="{Binding ElementName=MyMap, Path=Heading, Mode=TwoWay}" />
+                <Slider Visibility="Collapsed" x:Name="PitchSlider" Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="0,0,0,12" Minimum="0" Maximum="75" 
+                Value="{Binding ElementName=MyMap, Path=DesiredPitch, Mode=TwoWay}" />
+                <StackPanel Orientation="Vertical">
+                    <Grid VerticalAlignment="Top" x:Name="MyHeaderGrid" Height="200" >
+                        
+                        <Grid.Background>
+                            <AcrylicBrush BackgroundSource="Backdrop" TintOpacity="0.5" TintColor="#FFE8E7E1"></AcrylicBrush>
+                        </Grid.Background>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Margin="20">
+                            <PersonPicture x:Name="PrifileImage" ProfilePicture="{Binding UserImage}"  Width="160"  Height="160"  HorizontalAlignment="Left"  VerticalAlignment="Center" />
+                        </Grid>
+
+                        <Grid Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                            <StackPanel Margin="0,0,20,0" Orientation="Vertical">
+                                <StackPanel   Margin="10,0,0,0" Orientation="Horizontal">
+                                    <TextBlock  x:Name="nameTxt" Margin="0"  FontSize="30" Foreground="Black" Text="{Binding Name}"/>
+                                    <TextBlock x:Name="surnameTxt" Margin="5,0,0,0" FontSize="30" Foreground="Black" Text="{Binding Surname}"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="10,0,0,0"  Orientation="Horizontal">
+                                    <TextBlock x:Name="PositionTxt" Margin="0,0,0,0" FontSize="14" Foreground="Black" Text="{Binding Email}" />
+                                    <TextBlock Margin="10,0,0,0" FontSize="14" Foreground="Black" Text="{Binding Phone}" />
+                                </StackPanel>
+
+                                <Rectangle Width="auto" Height="0.5" Margin="10" Fill="Black" Opacity="0.4" />
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Margin="10,0,0,0" FontSize="14" Foreground="Black" Text="Кол-во кварталов:" />
+                                    <TextBlock Margin="10,0,0,0" x:DefaultBindMode="TwoWay" FontFamily="Segoe UI" FontSize="14" Foreground="Black" Text="{Binding CountKv}" />
+                                    <TextBlock Margin="10,0,0,0" FontSize="14" Foreground="Black" Text="Кол-во выделов:" />
+                                    <TextBlock Margin="10,0,0,0" FontSize="14" Foreground="Black" Text="{Binding CountVd}" />
+                                    <TextBlock Margin="10,0,0,0" FontSize="14" Foreground="Black" Text="Общая площадь:" />
+                                    <TextBlock Margin="10,0,0,0" FontSize="14" Foreground="Black" Text="{Binding CountArea}" />
+                                </StackPanel>
+
+                                <Grid Margin="0,25,10,0">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <CommandBar  x:Name="mainCommandBar" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" DefaultLabelPosition="Right" IsOpen="False" OverflowButtonVisibility="Collapsed">
+                                            <AppBarButton x:Name="EditUser" Icon="Contact" Label="Изменить" ToolTipService.ToolTip="View details" Click="EditUser_Click" />
+                                            <AppBarSeparator/>
+                                            <AppBarButton Click="Add_Click" Icon="Add"  Label="Добавить"  />
+                                            <AppBarButton Icon="ViewAll" Click="GridViewVisible_Click"/>
+                                            <AppBarButton Icon="List"   Click="ListViewVisible_Click" />
+                                            <AppBarButton x:Name="MapView" Icon="MapPin" Click="MapView_Click" />
+                                        </CommandBar>
+
+                                    </StackPanel>
+
+
+                                    <RelativePanel  Grid.Column="1" VerticalAlignment="Center">
+
+                                        <ComboBox Background="Transparent"  BorderBrush="Transparent" BorderThickness="0"   x:Name="sortCbox" VerticalAlignment="Center" PlaceholderText="Фильтр" />
+                                        <AutoSuggestBox  x:Name="controlsSearchBox" RelativePanel.RightOf="sortCbox" MinWidth="250" x:FieldModifier="public" Margin="4,0,0,0" BorderBrush="{x:Null}" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Center" QueryIcon="Find" Style="{StaticResource AutoSuggestBoxStyle}"  RequestedTheme="Light" PlaceholderText="Поиск" />
+
+                                    </RelativePanel>
+
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+
+                    <Grid Padding="20,0,30,0">
+                        <StackPanel>
+                            <TextBlock x:Name="NameCard" HorizontalAlignment="Left" Margin="0,15,20,0" FontSize="20">Кварталы</TextBlock>
+                            <TextBlock x:Name="DefaultLocation"></TextBlock>
+                            <Rectangle x:Name="rectngle" Margin="0,20,0,20" VerticalAlignment="Top"  Width="auto" Height="0.5" Fill="Black" Opacity="0.4"></Rectangle>
+                        </StackPanel>
+                    </Grid>
+
+                    <controls:AdaptiveGridView Visibility="Visible" Padding="30,0,0,0"  x:Name="newItemGridView" SelectionChanged="NewItemGridView_SelectionChanged" SelectionMode="Single" >
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:Name="ImageOverlayDataTemplate">
+                                <Grid  Width="235"  Height="150" >
+
+                                    <Rectangle Fill="LightGray" />
+
+                                    <StackPanel Padding="12,10,0,0" Orientation="Horizontal">
+                                        <TextBlock FontFamily="Segoe UI" Foreground="Black" Text="Квартал: " />
+                                        <TextBlock FontFamily="Segoe UI" Foreground="Black" Text="{Binding NumKvartal}" />
+                                    </StackPanel>
+
+                                    <StackPanel Padding="12,10,0,0" HorizontalAlignment="Right" Orientation="Horizontal">
+                                        <TextBlock Margin="0,3,4,0" FontFamily="Segoe UI" FontSize="10" Foreground="Black" Text="Дата создания" />
+                                        <TextBlock Margin="0,3,13,0" FontFamily="Segoe UI" FontSize="10" Foreground="Black"  Text="{Binding CreateDateKvartal, Converter= {StaticResource myDateConverter}}" />
+                                    </StackPanel>
+
+                                    <StackPanel VerticalAlignment="Bottom">
+                                     
+                                        <StackPanel   Height="40"   Margin="4,0,0,0"  HorizontalAlignment="Left"  Orientation="Horizontal">
+                                            <controls:DataGrid x:Name="dataGridKvartal" />
+                                            <CommandBar Height="40" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent" FontFamily="Segoe UI" IsOpen="False">
+                                                <AppBarButton VerticalAlignment="Center" Click="AppBarButton_Click" Icon="List" Label="Просмотр" />
+                                                <AppBarButton VerticalAlignment="Center" Click="Delete_Click" Icon="Delete" Label="Удалить" />
+                                            </CommandBar>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                        <Grid></Grid>
+                    </controls:AdaptiveGridView>
+
+                    <ListView Visibility="Collapsed" x:Name="ItemListView" 
+                      VerticalAlignment="Stretch" SelectionMode="None" 
+                      IsItemClickEnabled="True" SelectionChanged="ItemListView_SelectionChanged" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Background="Transparent">
+
+                                    <StackPanel Orientation="Horizontal"  Margin="30,5,0,5" >
+                                        <Grid  VerticalAlignment="Center" HorizontalAlignment="Center" Height="68" Width="68">
+                                            <Ellipse StrokeThickness="1" Stroke="ForestGreen" Height="50" Width="50"/>
+                                        </Grid>
+                                        <TextBlock VerticalAlignment="Center" FontSize="24" Margin="20">Квартал №</TextBlock>
+                                        <TextBlock VerticalAlignment="Center" FontSize="24" Text="{Binding NumKvartal}"></TextBlock>
+                                        <StackPanel  Padding="12,10,0,0" HorizontalAlignment="Right" Orientation="Horizontal">
+                                            <TextBlock Margin="0,3,13,0" FontFamily="Segoe UI" FontSize="15" Foreground="Black" Text="{Binding CreateDateKvartal}" />
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+                        <Grid></Grid>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Margin" Value="0"></Setter>
+                                <Setter Property="Padding" Value="0"></Setter>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+
+
+
+
+                </StackPanel>
+              
+            </Grid>
+           
+
+        </ScrollViewer>
+        
+
+
+
+
+
+    </Grid>
+</Page>

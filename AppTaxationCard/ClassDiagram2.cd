@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AppTaxationCard.App" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAkAgAAAAAAAIAAAAAEAQAAAQAAoAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.MainPage" BaseTypeListCollapsed="true">
+    <Position X="4" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Models.Account">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEACAAAAACAQAAAAQABAEAAAACAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.DegreeErrosion">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DegreeErrosion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.ExpositionSlope">
+    <Position X="5.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ExpositionSlope.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.Forestry">
+    <Position X="7.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Forestry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.Kvartal">
+    <Position X="9.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAEAAAAAAgAAIAAAAAAAAAAAAAAAABAAAAAE=</HashCode>
+      <FileName>Models\Kvartal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.MaketThen">
+    <Position X="5.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAACIAAQABAAAAAAABAAEAAhABAAAAAAABBgAAA=</HashCode>
+      <FileName>Models\MaketThen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.ModelContext">
+    <Position X="7.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgAAEAQIAABAAAAUAAAAQECAAgQCAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ModelContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.Poroda">
+    <Position X="9.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Poroda.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.SessionUser">
+    <Position X="11" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAEAAAAAQAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\SessionUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.TypeEarth">
+    <Position X="9.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\TypeEarth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.TypeErrosion">
+    <Position X="0.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Models\TypeErrosion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.TypeOrl">
+    <Position X="11" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TypeOrl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Models.Videl" BaseTypeListCollapsed="true">
+    <Position X="11" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAaAAAACQACAAQAAgQAAEAAAAAAIQAAAACAAZACFFA=</HashCode>
+      <FileName>Models\Videl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Services.Printing.PrintPage" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAIAAAAACAAASAABAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Services\Printing\PrintPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Services.Printing.PrintService">
+    <Position X="2.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAIAAAAAAAAAGABAAAAAAAgAAAAAACCAAQKBAAMBAA=</HashCode>
+      <FileName>Services\Printing\PrintService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Services.Printing.UIElementExtensions">
+    <Position X="0.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAQAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Printing\UIElementExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.ViewModels.DashboardPageViewModel">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACIAAEAKCgCECAAQAAAAwQBEBAAAAMAAJAKAAEARM=</HashCode>
+      <FileName>ViewModels\DashboardPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.ViewModels.ViewModelLocator">
+    <Position X="9.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAACA=</HashCode>
+      <FileName>ViewModels\ViewModelLocator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Views.ListTable">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ControlDataBasePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppTaxationCard.Views.ControlDataBasePage" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="AppTaxationCard.Views.ControlDataBasePage.GroupInfoCollection&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Views\ControlDataBasePage.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAQACAAQAECAAABQBEAABQAoIRAUgACAAAAAAACEAQA=</HashCode>
+      <FileName>Views\ControlDataBasePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Views.CreateVidelPage" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAIwAgiECABABAACAACAQBBUAAEAAggAESAAAJEgA=</HashCode>
+      <FileName>Views\CreateVidelPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Views.DateTimeOffsetToStringConverter" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DashboardPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Views.DashboardPage" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQYQIQAAAAAAECCAAAQAoAAAgUAACAAAACCCQAAAACE=</HashCode>
+      <FileName>Views\DashboardPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Views.EditUserPage" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAABAUAJQAAAAAABAAAQAAAAAA=</HashCode>
+      <FileName>Views\EditUserPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Views.LoginPage" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\LoginPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Views.RegistrationPage" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAQAAAAAAAgAAAAAAIAAA=</HashCode>
+      <FileName>Views\RegistrationPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Views.SettingsPage" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Views\SettingsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppTaxationCard.Views.VidelListPage" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYCAAAAAACIAESAAAhACAWAAQAIAAAAAAAABQAAABA=</HashCode>
+      <FileName>Views\VidelListPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="AppTaxationCard.Services.Printing.PageNumbering">
+    <Position X="0.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAABAAAAAAgAAAAAAAAAAACAAAAAEAAEA=</HashCode>
+      <FileName>Services\Printing\PageNumbering.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

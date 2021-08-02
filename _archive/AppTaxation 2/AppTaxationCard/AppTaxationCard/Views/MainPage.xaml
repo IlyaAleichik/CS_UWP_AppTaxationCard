@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="AppTaxationCard.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:AppTaxationCard"
+    xmlns:vm ="using:AppTaxationCard.ViewModels"
+    xmlns:model ="using:AppTaxationCard.Models"
+    xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
+    xmlns:Windows10version1803="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 6)"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+    Loaded="Page_Loaded">
+
+    <Grid Background="{StaticResource SystemControlAcrylicWindowMediumHighBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <NavigationView  Windows10version1809:PaneDisplayMode="LeftCompact" IsTabStop="False" x:Name="NavigationViewControl" Windows10version1803:BackRequested="NavView_BackRequested" Windows10version1803:IsBackEnabled="{x:Bind AppFrame.CanGoBack, Mode=OneWay}"   ItemInvoked="NavigationViewControl_ItemInvoked"  AlwaysShowHeader="True" Canvas.ZIndex="0">
+
+            <NavigationView.MenuItems >
+                <NavigationViewItem Icon="Home" >
+                    <TextBlock Tag="Nav_Home">Рабочая панель</TextBlock>
+                </NavigationViewItem>
+
+                <NavigationViewItem Icon="ViewAll"  >
+                    <TextBlock Tag="Nav_ControlDatabase">Таблицы</TextBlock>
+                </NavigationViewItem>
+           
+            </NavigationView.MenuItems>
+
+            <Frame x:Name="contentFrame" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition  />
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+
+        </NavigationView>
+
+        <Grid Grid.Row="1" Background="DarkGray">
+            <Rectangle Fill="Green"  />
+            <TextBlock Margin="6,4" Text="Application Version 1.0.0.0 " Foreground="White" FontSize="12" />
+        </Grid>
+    </Grid>
+</Page>

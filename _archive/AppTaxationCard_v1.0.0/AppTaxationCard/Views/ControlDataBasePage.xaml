@@ -1,0 +1,181 @@
+﻿<Page
+    x:Class="AppTaxationCard.Views.ControlDataBasePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppTaxationCard.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm ="using:AppTaxationCard.ViewModels"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Windows10version1809="using:Windows.UI.Xaml.Controls"
+    xmlns:Windows10version18091="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
+    mc:Ignorable="d" Loaded="Page_Loaded"
+    >
+
+    <Page.DataContext>
+        <vm:DashboardPageViewModel />
+    </Page.DataContext>
+    
+    <Grid >
+        <SplitView  x:Name="splitView" PaneBackground="Transparent"
+           IsPaneOpen="True" OpenPaneLength="300" CompactPaneLength="48" DisplayMode="Inline">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Таблицы категорий" x:Name="PaneHeader"  VerticalAlignment="Bottom" Padding="25,0,0,20" Style="{StaticResource BaseTextBlockStyle}"/>
+
+                    <ListView  x:Name="NavLinksList"  Grid.Row="1" VerticalAlignment="Stretch"  SelectionChanged="NavLinksList_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:ListTable">
+                                <StackPanel Margin="10">
+                                    <TextBlock FontSize="16" Text="{x:Bind Title}" HorizontalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
+            </SplitView.Pane>
+
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Windows10version18091:MenuBar Margin="182,0,0,12" Height="32" VerticalAlignment="Bottom">
+                    <Windows10version1809:MenuBarItem Title="Файл">
+                        <MenuFlyoutSubItem Text="Экспорт">
+                            <MenuFlyoutItem x:Name="btnExportExcel" Text="Excel" Click="ExportToExcel_Click" />
+                            <MenuFlyoutItem  x:Name="btnExportJson" Text="Json"/>
+                        </MenuFlyoutSubItem>
+                    </Windows10version1809:MenuBarItem>
+                    <Windows10version1809:MenuBarItem Title="Редактирование">
+                        <!--<MenuFlyoutItem Text="Заполнить базу" Click="BtnGetDataBaseData_ClickAsync"/>-->
+                        <MenuFlyoutItem x:Name="btnDeleteTable" Icon="Delete" Text="Удалить" Click="Delete_Click"/>
+                    </Windows10version1809:MenuBarItem>
+
+                    <Windows10version1809:MenuBarItem Title="Помощь">
+                        <MenuFlyoutItem IsEnabled="False" Text="Отправить отзыв"/>
+                        <MenuFlyoutItem x:Name="AboutUs" Text="О программе" Click="AboutUs_Click"/>
+                    </Windows10version1809:MenuBarItem>
+                </Windows10version18091:MenuBar>
+                <TextBlock x:Name="TableName" Margin="15" FontSize="16" VerticalAlignment="Bottom" FontWeight="Bold"  HorizontalAlignment="Left"/>
+                <StackPanel Padding="0,0,0,12" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+                   
+                    <Button  x:Name="btnGroupBy" Background="Transparent"  Height="32"  BorderThickness="0" Style="{StaticResource ButtonRevealStyle}" Content="Групировать" FontFamily="Segoe UI" Click="BtnGroupBy_Click"   />
+                 
+                    <ComboBox  x:Name="btnSortBy" Background="Transparent"  Height="32"  BorderThickness="0"  PlaceholderText="Сортировать по" FontFamily="Segoe UI" SelectionChanged="BtnSortBy_SelectionChanged"  >
+                        <ComboBoxItem Content="По возрастанию" />
+                        <ComboBoxItem Content="По убыванию" />
+                    </ComboBox>
+                    <!--<Button Background="Transparent" Height="32" Width="32" BorderThickness="0" Style="{StaticResource ButtonRevealStyle}" Content="&#xE710;" FontFamily="Segoe MDL2 Assets" />-->
+
+
+                </StackPanel>
+
+
+
+                <Grid x:Name="content" Grid.Row="1" Background="White" Opacity="0.9" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="316"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid  Grid.Column="1">
+                        <Grid.Background>
+                            <AcrylicBrush BackgroundSource="HostBackdrop"/>
+                        </Grid.Background>
+                        <ScrollViewer>
+                            <StackPanel>
+
+
+                                <Grid  CornerRadius="2" Background="White" Margin="10" Height="140">
+                                    <StackPanel Orientation="Horizontal">
+                                        <PersonPicture  ProfilePicture="{Binding UserImage}" Margin="10,0,0,0"/>
+                                        <StackPanel  Margin="10,14,0,0" Orientation="Vertical">
+                                            <StackPanel Margin="0,0,0,5" Orientation="Horizontal">
+                                                <TextBlock Margin="0,0,5,0" FontSize="20" Text="Илья"/>
+                                                <TextBlock RelativePanel.AlignRightWith="" FontSize="20" Text="Алейчик"/>
+                                            </StackPanel>
+                                            <controls:UniformGrid  Columns="2" Margin="10,0,0,0">
+                                                <TextBlock Margin="0,0,5,0" FontSize="12" Text="Время сеанса:"/>
+                                                <TextBlock x:Name="txt_clock" Margin="0,0,5,0" FontSize="12"/>
+                                                <TextBlock Margin="0,0,5,0" FontSize="12" Text="Выделов:" />
+                                                <TextBlock Margin="0,0,5,0" FontSize="12"  Text="{Binding CountVd}"/>
+                                                <TextBlock Margin="0,0,5,0" FontSize="12" Text="Кварталов:"/>
+                                                <TextBlock Margin="0,0,5,0" FontSize="12"  Text="{Binding CountKv}"/>
+                                                <TextBlock Margin="0,0,5,0" FontSize="12" Text="Общая площадь:"/>
+                                                <TextBlock Margin="0,0,5,0" FontSize="12" Text="{Binding CountArea}"/>
+                                            </controls:UniformGrid>
+
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                                <controls:Expander x:Name="Expander00" VerticalAlignment="Top" Margin="10,0,10,10" Header="Просмотр главных таблиц" HorizontalContentAlignment="Stretch" IsExpanded="False" ExpandDirection="Down" >
+                                    <StackPanel>
+                                        <Button x:Name="btnGetVidels" HorizontalAlignment="Stretch" Height="38"  BorderThickness="0" Style="{StaticResource ButtonRevealStyle}" Content="Выделы" FontFamily="Segoe UI" Click="BtnGetVidels_Click"  />
+                                    </StackPanel>
+                                </controls:Expander>
+            
+                                <controls:Expander  x:Name="Expander1" VerticalAlignment="Top" Margin="10,0,10,10" Header="Операции над таблицами категорий" HorizontalContentAlignment="Stretch" IsExpanded="False" ExpandDirection="Down" Collapsed="Expander1_Collapsed">
+                                    <Grid Background="White">
+                              
+                                  
+                                        <StackPanel>
+                                            <TextBox x:Name="txtForestry"  IsEnabled="False" Margin="10" Header="Лесничество" BorderThickness="1" Background="White"/>
+                                            <TextBox x:Name="txtTypeEarth"  IsEnabled="False" Margin="10" Header="Вид земли"  BorderThickness="1" Background="White"/>
+                                            <TextBox x:Name="txtTypeOrl" IsEnabled="False" Margin="10" Header="ОРЛ/ОЗУ"   BorderThickness="1" Background="White"/>
+                                            <!--<TextBox x:Name="txtExpositions" IsEnabled="False" Margin="10" Header="Експозиция" BorderThickness="1" Background="White"/>-->
+                                            <TextBox x:Name="txtTypeErosion" IsEnabled="False" Margin="10" Header="Вид эрозии"  BorderThickness="1" Background="White"/>
+                                            <TextBox x:Name="txtDegreeErosion" IsEnabled="False" Margin="10" Header="Степень эрозии"   BorderThickness="1" Background="White"/>
+                                            <Button x:Name="btnAddDataSave"  Margin="10" Content="Сохранить"  BorderThickness="1" Background="#FF268726" Foreground="White" Click="BtnAddDataSave_Click"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </controls:Expander>
+                                <!--<controls:Expander CornerRadius="2"  x:Name="Expander2" VerticalAlignment="Top" Margin="10,0,10,10" Header="Дополнительные опции (beta)" HorizontalContentAlignment="Stretch" IsExpanded="False" ExpandDirection="Down">
+                                    <Grid Background="White">
+                                        <StackPanel>
+                                            <TextBox  IsEnabled="False" Margin="10" Header="Тест меню" CornerRadius="2" BorderThickness="1" Background="White"/>
+                                            <TextBox  IsEnabled="False" Margin="10" Header="Дополнительный функционал бдует заполнен позже" CornerRadius="2" BorderThickness="1" Background="White"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </controls:Expander>-->
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                    <controls:DataGrid  x:Name="dataGrid" AutoGenerateColumns="False" LoadingRowGroup="DataGrid_LoadingRowGroup" RowGroupHeaderPropertyNameAlternative="Range" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged">
+                        <controls:DataGrid.Columns  >
+
+                            <controls:DataGridTextColumn Visibility="Collapsed" x:Name="c_forestry"      Header="Лесничество" Binding="{Binding NameForestry}"/>
+                            <controls:DataGridTextColumn Visibility="Collapsed" x:Name="c_typeearth"     Header="Вид земли" Binding="{Binding NameTypeEarth }"/>
+                            <controls:DataGridTextColumn Visibility="Collapsed" x:Name="c_typeorl"       Header="ОРЛ/ОЗУ" Binding="{Binding NameTypeOrl }"/>
+                            <controls:DataGridTextColumn Visibility="Collapsed" x:Name="c_expositions"   Header="Експозиция" Binding="{Binding  NameExpositionSlope }"/>
+                            <controls:DataGridTextColumn Visibility="Collapsed" x:Name="c_erosion"       Header="Вид эрозии" Binding="{Binding NameTypeErrosion }"/>
+                            <controls:DataGridTextColumn Visibility="Collapsed" x:Name="c_degree"        Header="Степень эрозии" Binding="{Binding NameDegreeErrosion }"/>
+
+
+                            <controls:DataGridTextColumn x:Name="vc_kvartal"      Header="Номер картала" Binding="{Binding Kvartal.NumKvartal}"/>
+                            <controls:DataGridTextColumn x:Name="vc_forestry"     Header="Лесничесто" Binding="{Binding Forestry.NameForestry}"/>
+                            <controls:DataGridTextColumn x:Name="vc_numvidel"     Header="Номер выдела" Binding="{Binding  NumVidel}"/>
+                            <controls:DataGridTextColumn x:Name="vc_area"         Header="Площадь" Binding="{Binding  Area}"/>
+                            <controls:DataGridTextColumn x:Name="vc_typeearth"    Header="Вид земель" Binding="{Binding  TypeEarth.NameTypeEarth }"/>
+                            <controls:DataGridTextColumn x:Name="vc_typeorl"      Header="ОРЛ/ОЗУ" Binding="{Binding TypeOrl.NameTypeOrl }"/>
+                            <controls:DataGridTextColumn x:Name="vc_expositions"  Header="Експозиция склона" Binding="{Binding ExpositionSlope.NameExpositionSlope }"/>
+                            <controls:DataGridTextColumn x:Name="vc_krut"         Header="Куртизна склона" Binding="{Binding Krut }"/>
+                            <controls:DataGridTextColumn x:Name="vc_typeerosion"  Header="Вид эрозии" Binding="{Binding TypeErrosions.NameTypeErrosion}"/>
+                            <controls:DataGridTextColumn x:Name="vc_degree"       Header="Степень эрозии" Binding="{Binding DegreeErrosions.NameDegreeErrosion }"/>
+
+
+
+                        </controls:DataGrid.Columns>
+                    </controls:DataGrid>
+                </Grid>
+
+
+            </Grid>
+        </SplitView>
+    </Grid>
+</Page>
